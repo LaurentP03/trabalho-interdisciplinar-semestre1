@@ -26,6 +26,8 @@ function gerarRelatorio() {
     tabela.id = "tabelaCandidatos";
 
     const cabecalho = document.createElement("tr");
+    
+    const titulos = ["Nome do Candidato", "CPF", "Nascimento", "Pontuação"];
 
     for (let i = 0; i < titulos.length; i++) {
         const th = document.createElement("th");
@@ -115,7 +117,7 @@ function filtrarPorNome() {
         var indice = candidatosFiltrados[i];
 
         if (vetCandidatos[indice].toUpperCase().includes(filtroNome)) {
-            novosCandidatos.push[indice];
+            novosCandidatos.push(indice);
         }
     }
 
