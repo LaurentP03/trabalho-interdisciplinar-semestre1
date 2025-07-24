@@ -88,8 +88,12 @@ function escolherFiltro() {
     }
 }
 function filtrarCandidatos() {
+
+    candidatosFiltrados = [];
+
     for (let i = 0; i < vetCandidatos.length; i++) {
         candidatosFiltrados.push(i);
+    
     }
     if (inNome.value) {
         filtrarPorNome();
@@ -101,4 +105,21 @@ function filtrarCandidatos() {
         filtrarPorPontuacao();
     }
 }
-function filtrarPorNome() { }
+function filtrarPorNome() {
+
+    var filtroNome = inNome.value.toUpperCase();
+    var novosCandidatos = [];
+
+    for (let i = 0; i < candidatosFiltrados.length; i++){
+
+        var indice = candidatosFiltrados[i];
+
+        if (vetCandidatos[indice].toUpperCase().includes(filtroNome)) {
+            novosCandidatos.push[indice];
+        }
+    }
+
+    candidatosFiltrados = novosCandidatos;
+
+
+    }
