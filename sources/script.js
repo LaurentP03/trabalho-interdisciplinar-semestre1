@@ -13,6 +13,8 @@ inAnoNascimento.addEventListener("input", gerarRelatorio);
 inPontuacao.addEventListener("input", gerarRelatorio);
 sltFiltros.addEventListener("change", escolherFiltro);
 
+var candidatosFiltrados = [];
+
 function gerarRelatorio() {
     const antiga = document.querySelector("#tabelaCandidatos");
     if (antiga) {
@@ -32,7 +34,7 @@ function gerarRelatorio() {
     }
 
     tabela.appendChild(cabecalho);
-    const candidatosFiltrados = filtrarCandidatos();
+    filtrarCandidatos();
     for (let i = 0; i < candidatosFiltrados.length; i++) {
 
         const linha = document.createElement("tr");
@@ -86,15 +88,17 @@ function escolherFiltro() {
     }
 }
 function filtrarCandidatos() {
-    var candidatosFiltrados = [];
     for (let i = 0; i < vetCandidatos.length; i++) {
-     if (passaFiltros(i)) {
         candidatosFiltrados.push(i);
-     }
     }
-    return candidatosFiltrados;
-}
-function passaFiltros(index) {
-    return filtrarPorNome(index) && filtrarPorAnoNascimento(index) && filtrarPorPontuacao(index);
+    if (inNome.value) {
+        filtrarPorNome();
+    }
+    if (inAnoNascimento.value) {
+        filtrarPorAno();
+    }
+    if (inPontuacao.value) {
+        filtrarPorPontuacao();
+    }
 }
 function filtrarPorNome() { }
