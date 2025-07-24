@@ -1,4 +1,4 @@
-document.body.onload = function(){
+document.body.onload = function () {
     gerarRelatorio();
     escolherFiltro();
 }
@@ -18,7 +18,7 @@ function gerarRelatorio() {
     if (antiga) {
         antiga.remove();
     }
-    
+
     const tabela = document.createElement("table");
     tabela.classList.add("tabela-candidatos");
     tabela.id = "tabelaCandidatos";
@@ -32,21 +32,22 @@ function gerarRelatorio() {
     }
 
     tabela.appendChild(cabecalho);
-    for (let i = 0; i < vetCandidatos.length; i++) {
+    const candidatosFiltrados = filtrarCandidatos();
+    for (let i = 0; i < candidatosFiltrados.length; i++) {
 
         const linha = document.createElement("tr");
 
         const tdNome = document.createElement("td");
-        tdNome.innerHTML = vetCandidatos[i];
+        tdNome.innerHTML = vetCandidatos[candidatosFiltrados[i]];
 
         const tdCpf = document.createElement("td");
-        tdCpf.innerHTML = vetCPF[i];
+        tdCpf.innerHTML = vetCPF[candidatosFiltrados[i]];
 
         const tdNascimento = document.createElement("td");
-        tdNascimento.innerHTML = vetNascimento[i];
+        tdNascimento.innerHTML = vetNascimento[candidatosFiltrados[i]];
 
         const tdPontuacao = document.createElement("td");
-        tdPontuacao.innerHTML = vetPontuacao[i];
+        tdPontuacao.innerHTML = vetPontuacao[candidatosFiltrados[i]];
 
         linha.appendChild(tdNome);
         linha.appendChild(tdCpf);
@@ -60,17 +61,17 @@ function gerarRelatorio() {
 
 function escolherFiltro() {
     const filtro = sltFiltros.value;
-    
+
     switch (filtro) {
         case "nome":
-           inNome.style.display = "block";
-           inAnoNascimento.style.display = "none";
-           inPontuacao.style.display = "none";
+            inNome.style.display = "block";
+            inAnoNascimento.style.display = "none";
+            inPontuacao.style.display = "none";
             break;
         case "dataNascimento":
-           inNome.style.display = "none";
-           inAnoNascimento.style.display = "block";
-           inPontuacao.style.display = "none";
+            inNome.style.display = "none";
+            inAnoNascimento.style.display = "block";
+            inPontuacao.style.display = "none";
             break;
         case "pontuacao":
             inNome.style.display = "none";
@@ -84,5 +85,16 @@ function escolherFiltro() {
             break;
     }
 }
-
-function filtrarPorNome() {}
+function filtrarCandidatos() {
+    var candidatosFiltrados = [];
+    for (let i = 0; i < vetCandidatos.length; i++) {
+     if (passaFiltros(i)) {
+        candidatosFiltrados.push(i);
+     }
+    }
+    return candidatosFiltrados;
+}
+function passaFiltros(index) {
+    return filtrarPorNome(index) && filtrarPorAnoNascimento(index) && filtrarPorPontuacao(index);
+}
+function filtrarPorNome() { }
