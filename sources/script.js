@@ -1,5 +1,17 @@
-document.body.onload = gerarRelatorio;
+document.body.onload = function(){
+    gerarRelatorio();
+    escolherFiltro();
+}
+
+const inNome = document.getElementById("inNome");
+const inAnoNascimento = document.getElementById("inAnoNascimento");
+const inPontuacao = document.getElementById("inPontuacao");
 const sltFiltros = document.getElementById("sltFiltros");
+
+inNome.addEventListener("input", gerarRelatorio);
+inAnoNascimento.addEventListener("input", gerarRelatorio);
+inPontuacao.addEventListener("input", gerarRelatorio);
+sltFiltros.addEventListener("change", escolherFiltro);
 
 function gerarRelatorio() {
     const antiga = document.querySelector("#tabelaCandidatos");
@@ -46,23 +58,31 @@ function gerarRelatorio() {
     document.getElementById("container").appendChild(tabela);
 }
 
-sltFiltros.addEventListener("change", escolherFiltro);
-
 function escolherFiltro() {
     const filtro = sltFiltros.value;
     
     switch (filtro) {
         case "nome":
-            filtrarNome();
+           inNome.style.display = "block";
+           inAnoNascimento.style.display = "none";
+           inPontuacao.style.display = "none";
             break;
         case "dataNascimento":
-            filtrarDataDeNascimento();
+           inNome.style.display = "none";
+           inAnoNascimento.style.display = "block";
+           inPontuacao.style.display = "none";
             break;
         case "pontuacao":
-            filtrarPontuacao();
+            inNome.style.display = "none";
+            inAnoNascimento.style.display = "none";
+            inPontuacao.style.display = "block";
             break;
         default:
-            gerarRelatorio();
+            inNome.style.display = "none";
+            inAnoNascimento.style.display = "none";
+            inPontuacao.style.display = "none";
             break;
     }
 }
+
+function filtrarPorNome() {}
