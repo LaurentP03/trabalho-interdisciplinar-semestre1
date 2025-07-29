@@ -87,27 +87,36 @@ function gerarRelatorio() {
 function escolherFiltro() {
     //Recebe o value do option selecionado dentro do select no html
     const filtro = sltFiltros.value;
-
+    candidatosFiltrados = [];
     switch (filtro) {
         case "nome":
             inNome.style.display = "block";
             inAnoNascimento.style.display = "none";
             inPontuacao.style.display = "none";
+            inAnoNascimento.value = "";
+            inPontuacao.value = "";
             break;
         case "dataNascimento":
             inNome.style.display = "none";
             inAnoNascimento.style.display = "block";
             inPontuacao.style.display = "none";
+            inNome.value = "";
+            inPontuacao.value = "";
             break;
         case "pontuacao":
             inNome.style.display = "none";
             inAnoNascimento.style.display = "none";
             inPontuacao.style.display = "block";
+            inNome.value = "";
+            inAnoNascimento.value = "";
             break;
         default:
             inNome.style.display = "none";
             inAnoNascimento.style.display = "none";
             inPontuacao.style.display = "none";
+            inNome.value = "";
+            inPontuacao.value = "";
+            inAnoNascimento.value = "";
             break;
     }
 }
@@ -115,7 +124,6 @@ function escolherFiltro() {
 //Salvar as posições dos candidatos no vetor de acordo com o filtro
 function filtrarCandidatos() {
     //Apaga as posições salvas dos candidatos filtrados
-    candidatosFiltrados = [];
 
     //Salva as posições de vetCandidatos
     for (let i = 0; i < vetCandidatos.length; i++) {
@@ -148,7 +156,7 @@ function filtrarPorPontuacao() {
         
         var indice = candidatosFiltrados[i];
 
-        if ((vetPontuacao[indice]) >= pontuacao) {
+        if (vetPontuacao[indice] >= Number(pontuacao)) {
             novosCandidatos.push(indice);
         }
     }
