@@ -138,6 +138,23 @@ function filtrarCandidatos() {
     }
 
 }
+
+function filtrarPorPontuacao() {
+
+    var pontuacao = inPontuacao.value;
+    var novosCandidatos = [];
+
+    for (let i = 0; i < candidatosFiltrados.length; i++) {
+        
+        var indice = candidatosFiltrados[i];
+
+        if ((vetPontuacao[indice]) >= pontuacao) {
+            novosCandidatos.push(indice);
+        }
+    }
+    candidatosFiltrados = novosCandidatos;
+}
+
 //Filtra o vetor por nome
 function filtrarPorNome() {
 
