@@ -138,20 +138,28 @@ function filtrarCandidatos() {
     }
 
 }
+//Filtra o vetor por nome
 function filtrarPorNome() {
 
+    //Recebe nome
     var filtroNome = inNome.value.toUpperCase();
+    //Onde os candidatos filtrados são armazenados
     var novosCandidatos = [];
 
-    for (let i = 0; i < candidatosFiltrados.length; i++) {
+    //Percorre vetCandidatos
+    for (let i = 0; i < vetCandidatos.length; i++) {
 
+        //Armazena o índice do candidato filtrado
         var indice = candidatosFiltrados[i];
 
+        //Se o candidato na posição indice incluir o nome do filtro
         if (vetCandidatos[indice].toUpperCase().includes(filtroNome)) {
+            //Adiciona o candidato a novosCandidatos
             novosCandidatos.push(indice);
         }
     }
 
+    //Recolhe todos os novosCandidatos para serem utilizados em gerarRelatorio
     candidatosFiltrados = novosCandidatos;
 
 }
