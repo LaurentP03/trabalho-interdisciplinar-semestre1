@@ -135,12 +135,12 @@ function filtrarCandidatos() {
         filtrarPorNome();
     }
     //Checa se o campo inAnoNascimento tem value ou não
-    if (inAnoNascimento.value) {
+    else if (inAnoNascimento.value) {
         //Chama a função
         filtrarPorAnoNascimento();
     }
     //Checa se o campo inPontuacao tem value ou não
-    if (inPontuacao.value) {
+    else if (inPontuacao.value) {
         //Chama a função
         filtrarPorPontuacao();
     }
