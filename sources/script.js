@@ -69,11 +69,20 @@ function gerarRelatorio() {
         const tdPontuacao = document.createElement("td");
         tdPontuacao.innerHTML = vetPontuacao[candidatosFiltrados[i]];
 
+        const tdAprovacao = document.createElement("td");
+
+        if (vetPontuacao[candidatosFiltrados[i]] >= 900) {
+            tdAprovacao.innerHTML = "Classificado";
+        }else{
+            tdAprovacao.innerHTML = "Desclassificado";
+        }
+
         //Anexa as colunas como filhas de linha
         linha.appendChild(tdNome);
         linha.appendChild(tdCpf);
         linha.appendChild(tdNascimento);
         linha.appendChild(tdPontuacao);
+        linha.appendChild(tdAprovacao);
 
         //Anexa as linhas como filhas de tabela
         tabela.appendChild(linha);
@@ -153,7 +162,7 @@ function filtrarPorPontuacao() {
     var novosCandidatos = [];
 
     for (let i = 0; i < candidatosFiltrados.length; i++) {
-        
+
         var indice = candidatosFiltrados[i];
 
         if (vetPontuacao[indice] >= Number(pontuacao)) {
