@@ -134,7 +134,7 @@ function escolherFiltro() {
 //Salvar as posições dos candidatos no vetor de acordo com o filtro
 function filtrarCandidatos() {
     //Apaga as posições salvas dos candidatos filtrados
-
+    candidatosFiltrados = [];
     //Salva as posições de vetCandidatos
     for (let i = 0; i < vetCandidatos.length; i++) {
         candidatosFiltrados.push(i);
@@ -324,5 +324,5 @@ function relatorioTop10() {
     }
 
     //Anexa tabela como filho de tabelaMain no DOM
-    document.getElementById("tabelaMain").appendChild(tabela);
+    document.getElementById("tabelaSecundaria").appendChild(tabela);
 }
