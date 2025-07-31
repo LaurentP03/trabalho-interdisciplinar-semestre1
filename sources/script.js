@@ -157,35 +157,56 @@ function filtrarCandidatos() {
 
 }
 
+//Filtra o vetor por pontuação
 function filtrarPorPontuacao() {
 
+    //Recebe pontuação
     var pontuacao = inPontuacao.value;
+    //Onde os candidatos filtrados são armazenados
     var novosCandidatos = [];
 
+    //Percorre candidatosFiltrados
     for (let i = 0; i < candidatosFiltrados.length; i++) {
 
+        //armazena o índice do candidato na posição i
         var indice = candidatosFiltrados[i];
 
+        //Checa se vetPontuacao na posicao indice é maior ou igual a pontuação recebida pelo
+        //se for verdade
+        //Adiciona a novosCandidatos
         if (vetPontuacao[indice] >= Number(pontuacao)) {
             novosCandidatos.push(indice);
         }
     }
+    //Recolhe todos os novosCandidatos para serem utilizados em gerarRelatorio
     candidatosFiltrados = novosCandidatos;
 }
+
+//Filtra o vetor por ano de nascimento
 function filtrarPorAnoNascimento() {
 
+    //Recebe nome
     var filtroAno = Number(inAnoNascimento.value);
+    //Onde os candidatos filtrados são armazenados
     var novosCandidatos = [];
 
+    //Percorre candidatosFiltrados
     for (let i = 0; i < candidatosFiltrados.length; i++) {
+        //armazena o índice do candidato na posição i
         var indice = candidatosFiltrados[i];
+        //recebe a data na posição i
         var dataCompleta = vetNascimento[indice];
+        //separa somente o ano da data
         var anoNascimento = Number(dataCompleta.split("/")[2]);
 
+        //checa se a data é maior que o filtro
+        //se for verdade
+        //adiciona a novosCandidatos
         if (anoNascimento >= filtroAno) {
             novosCandidatos.push(indice)
         }
     }
+    //Recolhe todos os novosCandidatos para serem utilizados em gerarRelatorio
     candidatosFiltrados = novosCandidatos;
 }
 
@@ -197,7 +218,7 @@ function filtrarPorNome() {
     //Onde os candidatos filtrados são armazenados
     var novosCandidatos = [];
 
-    //Percorre vetCandidatos
+    //Percorre candidatosFiltrados
     for (let i = 0; i < vetCandidatos.length; i++) {
 
         //Armazena o índice do candidato filtrado
@@ -214,15 +235,15 @@ function filtrarPorNome() {
     candidatosFiltrados = novosCandidatos;
 }
 
-function filtrarPorAnoNascimento() {
-    var anoNascimento = inAnoNascimento.value;
-
-}
-
+//Filtra os 10 candidatos com melhores notas
 function filtrarTop10() {
-    for (let i = 0; i < vetPontuacao.length - 1; i++) {
+    //Inicialmente percorre a primeira posição do vetor
+    for (let i = 0; i < vetPontuacao.length - 1; i++) { //O "-1" garante que o for não percorra a última posição do vetor
+        //Inicialmente percorre a segunda posição do vetor
         for (let j = i; j < vetPontuacao.length; j++) {
+            //Checa inicialmente se a primeira posição do vetor [i] é menor que a segunda posição do vetor [j] 
             if (vetPontuacaoDecrescente[i] < vetPontuacaoDecrescente[j]) {
+                //Caso verdadeiro troca ambos de lugar em todos os vetores decrescentes (cópias dos vetores originais);
                 [vetPontuacaoDecrescente[i], vetPontuacaoDecrescente[j]] = [vetPontuacaoDecrescente[j], vetPontuacaoDecrescente[i]];
                 [vetCandidatosDescrescente[i], vetCandidatosDescrescente[j]] = [vetCandidatosDescrescente[j], vetCandidatosDescrescente[i]];
                 [vetNascimentoDescrescente[i], vetNascimentoDescrescente[j]] = [vetNascimentoDescrescente[j], vetNascimentoDescrescente[i]];
