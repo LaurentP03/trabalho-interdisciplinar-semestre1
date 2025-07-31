@@ -1,7 +1,8 @@
 //INICIALIZANDO 2 FUNÇÕES QUANDO O ARQUIVO É CARREGADO
 document.body.onload = function () {
-    gerarRelatorio(); //Gera a tabela
+    gerarRelatorio(); //Gera a tabela principal
     escolherFiltro(); //Oculta os inputs da tela
+    relatorioTop10(); //Gera a tabela do top 10
 }
 
 //Acessando os campos da tela
@@ -73,7 +74,7 @@ function gerarRelatorio() {
 
         if (vetPontuacao[candidatosFiltrados[i]] >= 900) {
             tdAprovacao.innerHTML = "Classificado";
-        }else{
+        } else {
             tdAprovacao.innerHTML = "Desclassificado";
         }
 
@@ -88,8 +89,8 @@ function gerarRelatorio() {
         tabela.appendChild(linha);
     }
 
-    //Anexa tabela como filho de container no DOM
-    document.getElementById("container").appendChild(tabela);
+    //Anexa tabela como filho de tabelaMain no DOM
+    document.getElementById("tabelaMain").appendChild(tabela);
 }
 
 //Oculta os inputs da tela
@@ -195,5 +196,96 @@ function filtrarPorNome() {
 
     //Recolhe todos os novosCandidatos para serem utilizados em gerarRelatorio
     candidatosFiltrados = novosCandidatos;
+}
 
+function filtrarPorAnoNascimento() {
+    var anoNascimento = inAnoNascimento.value;
+
+}
+
+function filtrarTop10() {
+    for (let i = 0; i < vetPontuacao.length - 1; i++) {
+        for (let j = i; j < vetPontuacao.length; j++) {
+            if (vetPontuacaoDecrescente[i] < vetPontuacaoDecrescente[j]) {
+                [vetPontuacaoDecrescente[i], vetPontuacaoDecrescente[j]] = [vetPontuacaoDecrescente[j], vetPontuacaoDecrescente[i]];
+                [vetCandidatosDescrescente[i], vetCandidatosDescrescente[j]] = [vetCandidatosDescrescente[j], vetCandidatosDescrescente[i]];
+                [vetNascimentoDescrescente[i], vetNascimentoDescrescente[j]] = [vetNascimentoDescrescente[j], vetNascimentoDescrescente[i]];
+                [vetCPFDecrescente[i], vetCPFDecrescente[j]] = [vetCPFDecrescente[j], vetCPFDecrescente[i]];
+            }
+        }
+    }
+}
+
+function relatorioTop10() {
+
+    //Selecionando o elemento da tela
+    const ultimaTabelaTop10 = document.querySelector("#tabelaTop10");
+    //Apaga a ultimaTabela
+    if (ultimaTabelaTop10) {
+        ultimaTabelaTop10.remove();
+    }
+    //Criando o elemento no html <table></table>
+    const tabela = document.createElement("table");
+    //Adicionando uma class à <table></table>
+    tabela.classList.add("tabela-Top10");
+    //Adicionando um id à <table></table>
+    tabela.id = "tabelaTop10";
+    //Criando a primeira linha da tabela que contém os títulos
+    const cabecalho = document.createElement("thead");
+    //Olha no vetor titulos
+    for (let i = 0; i < titulos.length; i++) {
+        //Cria uma coluna para cada posição do vetor
+        const th = document.createElement("th");
+        //Põe em cada coluna criada seu respectivo título
+        th.innerHTML = titulos[i];
+        //Tornando th filho de thead
+        //Inserindo th em cabecalho
+        cabecalho.appendChild(th);
+    }
+    //Tornando cabecalho filho de table
+    //Inserindo cabecalho em tabela
+    tabela.appendChild(cabecalho);
+
+    //Salvar as posições dos candidatos no vetor de acordo com o filtro
+    filtrarTop10();
+
+    //Percorre candidatosFiltrados
+    for (let i = 0; i < 10; i++) {
+        //Cria linha para cada candidato
+        const linha = document.createElement("tr");
+
+        //Cria as colunas com informações para cada linha
+        const tdNome = document.createElement("td");
+        tdNome.innerHTML = vetCandidatosDescrescente[i];
+
+        const tdCpf = document.createElement("td");
+        tdCpf.innerHTML = vetCPFDecrescente[i];
+
+        const tdNascimento = document.createElement("td");
+        tdNascimento.innerHTML = vetNascimentoDescrescente[i];
+
+        const tdPontuacao = document.createElement("td");
+        tdPontuacao.innerHTML = vetPontuacaoDecrescente[i];
+
+        const tdAprovacao = document.createElement("td");
+
+        if (vetPontuacaoDecrescente[i] >= 900) {
+            tdAprovacao.innerHTML = "Classificado";
+        } else {
+            tdAprovacao.innerHTML = "Desclassificado";
+        }
+
+        //Anexa as colunas como filhas de linha
+        linha.appendChild(tdNome);
+        linha.appendChild(tdCpf);
+        linha.appendChild(tdNascimento);
+        linha.appendChild(tdPontuacao);
+        linha.appendChild(tdAprovacao);
+
+        //Anexa as linhas como filhas de tabela
+        tabela.appendChild(linha);
+    }
+
+    //Anexa tabela como filho de tabelaMain no DOM
+    document.getElementById("tabelaMain").appendChild(tabela);
 }
