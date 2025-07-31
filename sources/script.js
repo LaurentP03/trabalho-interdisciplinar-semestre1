@@ -172,6 +172,22 @@ function filtrarPorPontuacao() {
     }
     candidatosFiltrados = novosCandidatos;
 }
+function filtrarPorAnoNascimento() {
+
+    var filtroAno = Number(inAnoNascimento.value);
+    var novosCandidatos = [];
+
+    for (let i = 0; i < candidatosFiltrados.length; i++) {
+        var indice = candidatosFiltrados[i];
+        var dataCompleta = vetNascimento[indice];
+        var anoNascimento = Number(dataCompleta.split("/")[2]);
+
+        if (anoNascimento >= filtroAno) {
+            novosCandidatos.push(indice)
+        }
+    }
+    candidatosFiltrados = novosCandidatos;
+}
 
 //Filtra o vetor por nome
 function filtrarPorNome() {
