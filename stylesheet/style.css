@@ -1,54 +1,60 @@
-/* Estilo base */
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f9f9f9;
-    color: #1c2d4a;
+    background-color: #f1eeea;
+    color: #08513a;
 }
 
 header {
-    background-color: #2f6846;
-    padding: 1rem 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: #f1eeea;
+    padding: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .container-header {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    text-align: center;
 }
 
 .container-header img {
-    height: 100px;
+    height: 90px;
     width: auto;
 }
 
-.container-header h1 {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 600;
+.texto-header {
+    color: #08513a;
+}
+
+.texto-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.texto-header p {
+    font-size: 1.1rem;
+    font-weight: 400;
 }
 
 main {
     max-width: 900px;
     margin: 2rem auto;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    background-color: #ffffff;
+    border-left: 5px solid #b58525;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .areaFiltros {
-    background-color: #f2fdf7;
-    border: 1px solid #d0e8da;
-    padding: 1rem;
-    border-radius: 6px;
+    background-color: #fff;
+    border-left: 4px solid #b58525;
+    padding: 1.5rem;
+    border-radius: 8px;
     margin-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -58,44 +64,48 @@ main {
 
 .areaFiltros input,
 .areaFiltros select {
-    padding: 0.5rem;
+    padding: 0.6rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1rem;
-    transition: background-color 0.3s, border-color 0.3s;
+    background-color: #fff;
     flex: 1;
     min-width: 150px;
+    transition: all 0.3s ease;
 }
 
 .areaFiltros input:focus,
 .areaFiltros select:focus {
-    outline: none;
-    border-color: #2f6846;
-    background-color: #eef5f0;
+    border-color: #b58525;
+    background-color: #fdf8f0;
 }
 
 .titulo-secao {
-    font-size: 1.25rem;
-    margin-top: 1.5rem;
-    color: #2f6846;
-    border-bottom: 2px solid #2f6846;
-    padding-bottom: 0.3rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: #08513a;
+    border-left: 5px solid #b58525;
+    padding-left: 0.75rem;
+    margin-bottom: 1rem;
 }
 
-/* Tabela de candidatos */
-.tabela-candidatos,
-.tabela-Top10 {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    transition: background-color 0.3s;
+.descricao-secao {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
 }
 
 .tabela-candidatos thead,
 .tabela-Top10 thead {
-    background-color: #2f6846;
+    background-color: #08513a;
     color: white;
+}
+
+.tabela-candidatos tr:hover,
+.tabela-Top10 tr:hover {
+    background-color: #fdf8f0;
 }
 
 .tabela-candidatos th,
@@ -104,7 +114,7 @@ main {
 .tabela-Top10 td {
     padding: 0.75rem;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #e0d5c0;
 }
 
 .tabela-candidatos tr:nth-child(even),
@@ -141,4 +151,29 @@ main {
     .tabela-Top10 {
         font-size: 0.8rem;
     }
+}
+
+.boas-vindas {
+    background-color: #fff;
+    border-left: 4px solid #b58525;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: #08513a;
+}
+
+.boas-vindas h2 {
+    font-size: 1.5rem;
+    color: #08513a;
+    margin-bottom: 1rem;
+}
+
+.boas-vindas p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.boas-vindas .assinatura {
+    font-style: italic;
+    color: #444;
 }
