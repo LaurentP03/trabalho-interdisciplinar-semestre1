@@ -70,8 +70,6 @@ main {
     font-size: 1rem;
     background-color: #fff;
     flex: 1;
-    min-width: 150px;
-    transition: all 0.3s ease;
 }
 
 .areaFiltros input:focus,
@@ -97,16 +95,15 @@ main {
     line-height: 1.6;
 }
 
+.tabela-candidatos,
+.tabela-Top10 {
+    width: 100%;
+}
 .tabela-candidatos thead,
 .tabela-Top10 thead {
     background-color: #08513a;
     color: white;
-}
-
-.tabela-candidatos tr:hover,
-.tabela-Top10 tr:hover {
-    background-color: #fdf8f0;
-}
+}   
 
 .tabela-candidatos th,
 .tabela-candidatos td,
@@ -117,40 +114,9 @@ main {
     border: 1px solid #e0d5c0;
 }
 
-.tabela-candidatos tr:nth-child(even),
-.tabela-Top10 tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
 .tabela-candidatos tr:hover,
 .tabela-Top10 tr:hover {
     background-color: #e6f2ec;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .container-header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .container-header img {
-        height: 80px;
-    }
-
-    .areaFiltros {
-        flex-direction: column;
-    }
-
-    .areaFiltros input,
-    .areaFiltros select {
-        width: 100%;
-    }
-
-    .tabela-candidatos,
-    .tabela-Top10 {
-        font-size: 0.8rem;
-    }
 }
 
 .boas-vindas {
