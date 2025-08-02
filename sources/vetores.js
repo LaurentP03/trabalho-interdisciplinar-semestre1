@@ -10,7 +10,9 @@ var vetPontuacao = [831, 814, 725, 1248, 1234, 1227, 1244, 723, 750, 1178, 1047,
 
 var titulos = ["Nome do Candidato", "CPF", "Nascimento", "Pontuação", "Indicação"];
 
-var vetPontuacaoDecrescente = vetPontuacao;
-var vetCandidatosDescrescente = vetCandidatos;
-var vetNascimentoDescrescente = vetNascimento;
-var vetCPFDecrescente = vetCPF;
+var candidatosFiltrados = [];
+
+var vetPontuacaoDecrescente = [];
+var vetCandidatosDescrescente = [];
+var vetNascimentoDescrescente = [];
+var vetCPFDecrescente = [];

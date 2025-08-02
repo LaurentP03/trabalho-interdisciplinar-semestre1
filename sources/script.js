@@ -1,10 +1,3 @@
-//INICIALIZANDO 2 FUNÇÕES QUANDO O ARQUIVO É CARREGADO
-document.body.onload = function () {
-    gerarRelatorio(); //Gera a tabela principal
-    escolherFiltro(); //Oculta os inputs da tela
-    relatorioTop10(); //Gera a tabela do top 10
-}
-
 //Acessando os campos da tela
 const inNome = document.getElementById("inNome");
 const inAnoNascimento = document.getElementById("inAnoNascimento");
@@ -17,9 +10,14 @@ inAnoNascimento.addEventListener("input", gerarRelatorio);
 inPontuacao.addEventListener("input", gerarRelatorio);
 sltFiltros.addEventListener("change", escolherFiltro);
 
-var candidatosFiltrados = [];
+// Inicializa funções quando o DOM estiver completamente carregado
+document.addEventListener('DOMContentLoaded', function () {
+    gerarRelatorio(); //Gera a tabela principal
+    escolherFiltro(); //Oculta os inputs da tela
+    relatorioTop10(); //Gera a tabela do top 10
+});
 
-//Gera a tabela
+//Gera a tabela de candidatos
 function gerarRelatorio() {
     //Selecionando o elemento da tela
     const ultimaTabela = document.querySelector("#tabelaCandidatos");
@@ -237,6 +235,13 @@ function filtrarPorNome() {
 
 //Filtra os 10 candidatos com melhores notas
 function filtrarTop10() {
+    //Põe as informações dos vetores dados nos novos vetores que serão organizados para o top 10
+    for (let i = 0; i < vetCandidatos.length; i++) {
+        vetPontuacaoDecrescente[i] = vetPontuacao[i];
+        vetCandidatosDescrescente[i] = vetCandidatos[i];
+        vetNascimentoDescrescente[i] = vetNascimento[i];
+        vetCPFDecrescente[i] = vetCPF[i];
+    }
     //Inicialmente percorre a primeira posição do vetor
     for (let i = 0; i < vetPontuacao.length - 1; i++) { //O "-1" garante que o for não percorra a última posição do vetor
         //Inicialmente percorre a segunda posição do vetor
