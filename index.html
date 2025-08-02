@@ -7,36 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./stylesheet/reset.css">
     <link rel="stylesheet" href="./stylesheet/style.css">
-    <title>
-        Concurso Público
-    </title>
+    <title>Concurso Público</title>
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <div class="container-header">
+            <img src="/imagem-home/logo.png" alt="Logo Banco Veredas do Brasil">
+            <h1>Concurso Público • Banco Veredas do Brasil</h1>
+        </div>
+    </header>
 
     <main>
-        Filtros:
-        <select name="" id="sltFiltros">
-            <option value="" disabled selected>Ordenar Por</option>
-            <option value="nome">Nome</option>
-            <option value="dataNascimento">Data de dascimento</option>
-            <option value="pontuacao">Pontuação</option>
-        </select>
+        <!-- TABELA TOP 10 -->
+        <section>
+            <h2 class="titulo-secao">Top 10 Candidatos por Pontuação</h2>
+            <div id="tabelaSecundaria">
+                <!-- Aqui fica a TabelaTop10 -->
+            </div>
+        </section>
 
-        <input type="text" id="inNome">
-        <input type="number" id="inAnoNascimento">
-        <input type="number" id="inPontuacao">
+        <!-- ÁREA DE FILTROS E TABELA GERAL -->
+        <section>
+            <h2 class="titulo-secao">Buscar Candidatos por Filtros</h2>
+            <div class="areaFiltros">
+                <select name="" id="sltFiltros">
+                    <option value="" disabled selected>Ordenar Por</option>
+                    <option value="nome">Nome</option>
+                    <option value="dataNascimento">Ano de nascimento</option>
+                    <option value="pontuacao">Pontuação</option>
+                </select>
 
-        <div id="tabelaMain">
-            <!--Aqui fica a tabelaMain-->
-        </div>
-        <div id="tabelaSecundaria">
-            <!--Aqui fica a TabelaTop10-->
-        </div>
+                <input type="text" id="inNome" placeholder="Filtrar por nome">
+                <input type="number" id="inAnoNascimento" placeholder="Ano de nascimento mínimo">
+                <input type="number" id="inPontuacao" placeholder="Pontuação mínima">
+            </div>
+
+            <h2 class="titulo-secao">Todos os Candidatos</h2>
+            <div id="tabelaMain">
+                <!-- Aqui fica a tabelaMain -->
+            </div>
+        </section>
     </main>
 
     <footer></footer>
+
     <script src="./sources/vetores.js"></script>
     <script src="./sources/script.js"></script>
 </body>
